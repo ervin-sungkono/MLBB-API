@@ -8,7 +8,7 @@ export async function GET(){
         await fetchListHeroes()
     }catch(err){
         console.log(err)
-        return NextResponse.json({success: false}, {status: 500})
+        return NextResponse.json({success: false, error: err}, {status: 500})
     }
     
     const jsonData = JSON.parse(readFileSync(path.resolve("./output", "hero.json"), 'utf-8'))
