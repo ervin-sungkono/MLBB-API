@@ -1,12 +1,15 @@
-import { fetchListHeroes } from "@/lib/scraper";
+import { head } from "@vercel/blob";
 import { NextResponse } from "next/server";
+import fetch from "node-fetch";
 
 export async function GET(){
     try{
-        const blob = await fetchListHeroes()
-        return NextResponse.json({data: blob}, {status: 200})
+        const { url } = await head("output/hero.json")
+        const data = await fetch(url).then(res => res.json())
+
+        return NextResponse.json({data: data, success: true}, {status: 200})
     }catch(err){
         console.log(err)
-        return NextResponse.json({success: false}, {status: 500})
+        return NextResponse.json({data: null, success: false}, {status: 500})
     }
 }
