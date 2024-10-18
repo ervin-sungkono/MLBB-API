@@ -6,7 +6,7 @@ export const maxDuration = 15;
 
 export async function GET(){
     try{
-        const { url } = await head("output/hero.json")
+        const { url } = await head("output/equipment.json")
         const data = await fetch(url).then(res => res.json())
 
         return NextResponse.json({data: data, success: true}, {status: 200})
