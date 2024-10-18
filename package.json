@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@sparticuz/chromium-min": "^129.0.0",
+    "@vercel/blob": "^0.25.1",
     "next": "14.2.15",
     "puppeteer-core": "^23.5.3",
     "react": "^18",
