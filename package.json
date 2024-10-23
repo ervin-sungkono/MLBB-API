@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sparticuz/chromium": "^129.0.0",
     "@sparticuz/chromium-min": "^129.0.0",
     "@vercel/blob": "^0.25.1",
     "next": "14.2.15",
