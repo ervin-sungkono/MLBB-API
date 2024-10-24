@@ -5,7 +5,7 @@ import fetch from "node-fetch";
 export async function GET(req){
     try{
         const { id } = req.params
-        const { url } = await head(`hero/${id}.json`)
+        const { url } = await head(`equipment/${id}.json`)
 
         const data = await fetch(url).then(res => res.json())
         return NextResponse.json({data: data, success: true}, {status: 200})

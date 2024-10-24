@@ -2,8 +2,6 @@ import { head } from "@vercel/blob";
 import { NextResponse } from "next/server";
 import fetch from "node-fetch";
 
-export const maxDuration = 15;
-
 export async function GET(){
     try{
         const { url } = await head("output/equipment.json")
