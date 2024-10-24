@@ -9,17 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sparticuz/chromium-min": "^129.0.0",
+    "@sparticuz/chromium": "^119.0.2",
     "@vercel/blob": "^0.25.1",
     "next": "14.2.15",
     "node-fetch": "^3.3.2",
     "puppeteer-cluster": "^0.24.0",
-    "puppeteer-core": "^23.5.3",
+    "puppeteer-core": "^21.5.1",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "eslint": "^8",
     "eslint-config-next": "14.2.15"
+  },
+  "engines": {
+    "node": "18"
   }
 }
