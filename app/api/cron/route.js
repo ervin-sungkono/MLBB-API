@@ -9,11 +9,13 @@ export async function GET(){
         const urls = [`${baseUrl}/api/heroes/cron`, `${baseUrl}/api/equipment/cron`]
         console.log(urls)
         const result = await Promise.all(urls.map(url => fetch(url, { 
-            method: 'GET', 
-            headers: {
-                'Content-Type': "application/json"
-            } 
-        }))).then(res => res.json())
+                method: 'GET', 
+                headers: {
+                    'Content-Type': "application/json"
+                } 
+            })
+            .then(res => res.json())
+        ))
         return NextResponse.json({data: result, success: true}, {status: 200})
     }catch(err){
         console.log(err)
