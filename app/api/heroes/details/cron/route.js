@@ -11,12 +11,14 @@ export async function GET(){
         const {url} = await head("output/hero.json")
         const heroList = await fetch(url).then(res => res.json())
         const offsets = extractOffset(heroList.length)
-        const results = await Promise.all(offsets.map((offset) => {
+        const results = await Promise.all(offsets.map(async(offset) => {
             const payload = { offset: offset, limit: SCRAPING_LIMIT }
-            return fetch(`https://${process.env.VERCEL_URL}/api/heroes/details`, {
+            const res = await fetch(`https://${process.env.VERCEL_URL}/api/heroes/details`, {
                 method: 'POST',
                 body: JSON.stringify(payload)
             }).then(res => res.json())
+            console.log("res: ",res)
+            return res
         }))
         .filter(res => res.success)
         .map(res => res.data)
