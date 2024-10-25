@@ -20,8 +20,6 @@ export async function GET(){
             console.log("res: ",res)
             return res
         }))
-        .filter(res => res.success)
-        .map(res => res.data)
 
         return NextResponse.json({data: results, success: true}, {status: 200})
     }catch(err){
