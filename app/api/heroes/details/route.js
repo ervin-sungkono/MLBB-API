@@ -3,9 +3,8 @@ import { NextResponse } from "next/server";
 
 export const maxDuration = 60;
 
-export async function GET(req){
-    const offset = req.nextUrl.searchParams.get("offset")
-    const limit = req.nextUrl.searchParams.get("limit")
+export async function POST(req){
+    const { offset, limit } = await req.json()
     
     try{
         await fetchHeroDetails(offset, limit)

@@ -13,8 +13,11 @@ export async function GET(){
         const offsets = extractOffset(equipmentList.length)
         
         await Promise.all(offsets.map((offset) => {
-            const params = new URLSearchParams({ offset: offset, limit: SCRAPING_LIMIT })
-            return fetch(`https://${process.env.VERCEL_URL}/api/equipment/details?${params}`)
+            const payload = { offset: offset, limit: SCRAPING_LIMIT }
+            return fetch(`https://${process.env.VERCEL_URL}/api/equipment/details`, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            })
         }))
 
         return NextResponse.json({success: true}, {status: 200})
