@@ -8,7 +8,7 @@ export const maxDuration = 60;
 
 export async function GET(){
     try{
-        const {url} = head("output/hero.json")
+        const {url} = await head("output/hero.json")
         const heroList = await fetch(url).then(res => res.json())
         const offsets = extractOffset(heroList.length)
         await Promise.all(offsets.map((offset) => fetch(`https://${process.env.VERCEL_URL}/api/heroes/details?offset=${offset}&limit=${SCRAPING_LIMIT}`)))
