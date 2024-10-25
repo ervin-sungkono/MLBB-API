@@ -11,9 +11,9 @@ export async function GET(){
         const {url} = await head("output/hero.json")
         const heroList = await fetch(url).then(res => res.json())
         const offsets = extractOffset(heroList.length)
-        await Promise.all(offsets.map((offset) => {
+        await Promise.all(offsets.map(async(offset) => {
             const payload = { offset: offset, limit: SCRAPING_LIMIT }
-            return fetch(`https://${process.env.VERCEL_URL}/api/heroes/details`, {
+            return await fetch(`https://${process.env.VERCEL_URL}/api/heroes/details`, {
                 method: 'POST',
                 body: JSON.stringify(payload)
             })

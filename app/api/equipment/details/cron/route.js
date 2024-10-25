@@ -12,9 +12,9 @@ export async function GET(){
         const equipmentList = await fetch(url).then(res => res.json())
         const offsets = extractOffset(equipmentList.length)
         
-        await Promise.all(offsets.map((offset) => {
+        await Promise.all(offsets.map(async(offset) => {
             const payload = { offset: offset, limit: SCRAPING_LIMIT }
-            return fetch(`https://${process.env.VERCEL_URL}/api/equipment/details`, {
+            return await fetch(`https://${process.env.VERCEL_URL}/api/equipment/details`, {
                 method: 'POST',
                 body: JSON.stringify(payload)
             })
