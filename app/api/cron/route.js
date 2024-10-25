@@ -14,7 +14,14 @@ export async function GET(){
                     'Content-Type': "application/json"
                 } 
             })
-            .then(res => res.json())
+            .then(res => {
+                if(res.ok) return res.json()
+                throw new Error("Failed to fetch: ", res.status)
+            })
+            .catch(err => {
+                console.error(err)
+                return null
+            })
         ))
         return NextResponse.json({data: result, success: true}, {status: 200})
     }catch(err){
