@@ -13,7 +13,7 @@ export async function GET(){
             headers: {
                 'Content-Type': "application/json"
             } 
-        })))
+        }))).then(res => res.json())
         return NextResponse.json({data: result, success: true}, {status: 200})
     }catch(err){
         console.log(err)
