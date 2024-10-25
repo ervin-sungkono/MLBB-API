@@ -19,7 +19,7 @@ export async function GET(){
                 throw new Error("Failed to fetch: ", res.status)
             })
             .catch(err => {
-                console.error(err)
+                console.log(err)
                 return null
             })
         ))
