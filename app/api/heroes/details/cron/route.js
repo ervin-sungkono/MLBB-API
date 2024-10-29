@@ -5,8 +5,8 @@ export const maxDuration = 60;
 export const dynamic = 'force-dynamic'
 
 export async function GET(req){
-    const offset = req.nextUrl.searchParams.get("offset")
-    const limit = req.nextUrl.searchParams.get("limit")
+    const offset = parseInt(req.nextUrl.searchParams.get("offset"))
+    const limit = parseInt(req.nextUrl.searchParams.get("limit"))
     
     try{
         await fetchHeroDetails(offset, limit)
