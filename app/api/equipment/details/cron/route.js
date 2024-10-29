@@ -1,4 +1,4 @@
-import { fetchHeroDetails } from "@/lib/scraper";
+import { fetchEquipmentDetails } from "@/lib/scraper";
 import { NextResponse } from "next/server";
 
 export const maxDuration = 60;
@@ -9,7 +9,7 @@ export async function GET(req){
     const limit = req.nextUrl.searchParams.get("limit")
     
     try{
-        await fetchHeroDetails(offset, limit)
+        await fetchEquipmentDetails(offset, limit)
         return NextResponse.json({success: true}, {status: 200})
     }catch(err){
         console.log(err)
