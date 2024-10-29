@@ -8,8 +8,8 @@ export async function GET(req){
     const limit = req.nextUrl.searchParams.get("limit")
     
     try{
-        const result = await fetchHeroDetails(offset, limit)
-        return NextResponse.json({data: result, success: true}, {status: 200})
+        await fetchHeroDetails(offset, limit)
+        return NextResponse.json({success: true}, {status: 200})
     }catch(err){
         console.log(err)
         return NextResponse.json({success: false}, {status: 500})
