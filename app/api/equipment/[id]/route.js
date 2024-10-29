@@ -2,9 +2,9 @@ import { head } from "@vercel/blob";
 import { NextResponse } from "next/server";
 import fetch from "node-fetch";
 
-export async function GET(req){
+export async function GET(request, context){
     try{
-        const { id } = req.params
+        const { id } = context.params
         const { url } = await head(`equipment/${id}.json`)
 
         const data = await fetch(url).then(res => res.json())
