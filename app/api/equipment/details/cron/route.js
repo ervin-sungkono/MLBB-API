@@ -2,6 +2,7 @@ import { fetchHeroDetails } from "@/lib/scraper";
 import { NextResponse } from "next/server";
 
 export const maxDuration = 60;
+export const revalidate = 0;
 
 export async function GET(req){
     const offset = req.nextUrl.searchParams.get("offset")
