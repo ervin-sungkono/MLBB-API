@@ -5,6 +5,10 @@ export const maxDuration = 60;
 export const dynamic = 'force-dynamic'
 
 export async function GET(req){
+    if(req.headers.get('Authorization') !== `Bearer ${process.env.CRON_SECRET}`){
+        return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+    }
+    
     const offset = parseInt(req.nextUrl.searchParams.get("offset"))
     const limit = parseInt(req.nextUrl.searchParams.get("limit"))
     
