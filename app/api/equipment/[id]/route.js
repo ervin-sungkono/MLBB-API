@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import { rateLimit } from "@/lib/rate-limit";
 import { MAX_REQUESTS_PER_INTERVAL } from "@/lib/const";
-import fetch from "node-fetch";
+import { fetch } from "@/lib/fetch";
 
 const limiter = rateLimit()
 
